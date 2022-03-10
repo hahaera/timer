@@ -1,9 +1,76 @@
-.timer-group{
-    display: flex;
+.title-group {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.timer-item{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.setting {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80%;
+  max-height: 90%;
+  overflow-y: scroll;
+  z-index: 50;
+  background-color: #fff;
+}
+
+.setting-title {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: yellow;
+  padding: 8px 16px;
+}
+
+.timer {
+  padding: 0 16px;
+  margin: 20px 0;
+}
+
+.timer-title {
+  padding: 8px;
+  font-size: 22px;
+}
+
+.timer-group {
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+}
+
+.timer-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+select {
+  appearance: none;
+  padding: 10px;
+  border: 1px solid #06f;
+  border-radius: 3px;
+}
+
+.active {
+  display: flex;
+}
+
+.control-group {
+  display: flex;
+}
+
+.btn-base {
+  padding: 8px 16px;
+  margin: 8px 0;
+  border: 1px solid #06f;
 }

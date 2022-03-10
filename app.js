@@ -1,9 +1,13 @@
 const time = document.querySelector('.time');
 const currentTitle = document.querySelector('.current-title');
 const timer = document.querySelector('.timer');
+const setting = document.querySelector('.setting');
 
 const start = document.querySelector('.start-btn');
+const stop = document.querySelector('.stop-btn');
 const addBtn = document.querySelector('.add-btn');
+const closeBtn = document.querySelector('.close-btn');
+const settingBtn = document.querySelector('.setting-btn');
 
 let index = 0;
 let currentTime = 0;
@@ -15,8 +19,17 @@ let min;
 let sec;
 let partRepeat;
 let totalRepeat;
+let state;
 
 let audio = new Audio('./assets/audio/count.mp3');
+
+settingBtn.addEventListener('click', function(){
+    setting.classList.add('active');
+})
+
+closeBtn.addEventListener('click', function(){
+    setting.classList.remove('active');
+})
 
 addBtn.addEventListener('click', function(){
     let clone = timer.cloneNode(true);
@@ -45,6 +58,9 @@ function repeatTimer(index){
 }
 
 function Setcount(){
+    if(state == 0){
+        stopCount();
+    }
     if(currentTime > 0){
         currentTime -= 1;
         if(currentTime == 3){
@@ -73,9 +89,27 @@ function Setcount(){
     
 }
 
+function stopCount(){
+    state = 0;
+    clearInterval(count);
+}
+
+stop.addEventListener('click', function(){
+    if(state == 1){
+        state = 0;
+        stopCount();
+        stop.innerHTML = `이어하기`;
+    } else{
+        stop.innerHTML = `정지`;
+        state = 1;
+        count = setInterval(Setcount, 1000);
+    }
+    
+})
 
 
 start.addEventListener('click', function(){
+    state = 1;
     clearInterval(count);
     index = 0;
     totalRepeat = document.querySelector('.total-repeat').value;
